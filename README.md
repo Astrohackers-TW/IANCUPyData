@@ -1,3 +1,17 @@
 # Project4PyConTaiwan2017
 
 [![Join the chat at https://gitter.im/Astrohackers-TW/Project4PyConTaiwan2017](https://badges.gitter.im/Astrohackers-TW/Project4PyConTaiwan2017.svg)](https://gitter.im/Astrohackers-TW/Project4PyConTaiwan2017?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Installation
+------------
+1. Clone this project from GitHub:
+
+        $ git clone https://github.com/Astrohackers-TW/Project4PyConTaiwan2017.git
+
+2. In the project directory, install required packages:
+
+        $ pip install -r requirements.txt
+
+3. In the project directory, execute:
+
+        $ python setup.py install
