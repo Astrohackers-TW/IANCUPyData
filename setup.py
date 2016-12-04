@@ -9,7 +9,9 @@ else:
     print('The directory "' + data_dir + '" already exists.')
 
 ## codes for data exportation
-
+from astroquery.vizier import Vizier
+import astropy.units as u
+from astropy.io import fits
 
 ##
 
