@@ -12,6 +12,7 @@ else:
 from astroquery.vizier import Vizier
 import astropy.units as u
 from astropy.io import fits
+import requests as re
 
 ##
 
