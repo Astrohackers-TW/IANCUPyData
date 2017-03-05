@@ -46,7 +46,7 @@ def get_m4():
         payloads = {'-r': (None, 'SNV'), '-name': (None, target)}
         results = re.post('http://cds.u-strasbg.fr/cgi-bin/Sesame', data = payloads)
         soup = BeautifulSoup(results.text, 'lxml')
-        pos = SkyCoord(soup.find_all('pre')[0].string.split('±')[0], frame='icrs', unit=(u.hourangle, u.deg))
+        pos = SkyCoord(soup.find_all('pre')[0].string.split('Â±')[0], frame='icrs', unit=(u.hourangle, u.deg))
         tmc = Vizier.query_region(pos, radius=r*u.deg, catalog='II/246/out')
 
     # PPMXL proper motion
