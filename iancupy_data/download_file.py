@@ -21,6 +21,6 @@ result = re.get(urlroot+'v='+v+'&r='+ra+'&d='+de+'&e='+e+'&h='+h+'&w='+w+'&f='+f
                 , stream=True)
 
 # Save result and delete tmp file.
-with open(data_dir + 'img2.fits', 'wb') as out_file:
+with open(data_dir + 'dss_image.fits', 'wb') as out_file:
     shutil.copyfileobj(result.raw, out_file)
 del result
