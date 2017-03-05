@@ -1,9 +1,12 @@
 import os
+import lxml
 import shutil
 import requests as re
 import astropy.units as u
-from astropy.io import fits
 from astroquery.vizier import Vizier
+from astropy.io import fits
+from astropy.coordinates import SkyCoord
+from bs4 import BeautifulSoup
 
 
 # Create the download file directory.
@@ -32,18 +35,26 @@ del result
 ## Query on vizier and save to FITS bin table
 # Query setup
 Vizier.ROW_LIMIT = -1
-target = 'NGC6121' # Another name: M4
-r = 0.4
+target = 'M4' # Another name: M4
+r = 0.01
 
 # Making query
 # 2MASS catalog
-tmc = Vizier.query_region(target, radius=r*u.deg, catalog='II/246/out') 
+try:
+    tmc = Vizier.query_region(target, radius = r*u.deg, catalog = 'II/246/out')
+except:
+    payloads = {'-r': (None, 'SNV'), '-name': (None, target)}
+    results = re.post('http://cds.u-strasbg.fr/cgi-bin/Sesame', data = payloads)
+    soup = BeautifulSoup(results.text, 'lxml')
+    pos = SkyCoord(soup.find_all('pre')[0].string.split('กำ')[0], frame='icrs', unit=(u.hourangle, u.deg))
+    tmc = Vizier.query_region(pos, radius=r*u.deg, catalog='II/246/out')
+
 # PPMXL proper motion
-ppmxl = Vizier.query_region(target, radius=r*u.deg, catalog='I/317/sample') 
+#ppmxl = Vizier.query_region(target, radius=r*u.deg, catalog='I/317/sample') 
 
 # Get catalog only
 jhk = tmc[0]
-pm = ppmxl[0]
+#pm = ppmxl[0]
 
 # Retrive data only from 2MASS columns [3,4,9,11,13,15,17,19,21]
 col1 = fits.Column(name=jhk.colnames[3], format=jhk.dtype[3], array=jhk[jhk.colnames[3]])
@@ -57,4 +68,4 @@ col8 = fits.Column(name=jhk.colnames[19], format=jhk.dtype[19], array=jhk[jhk.co
 
 cols = fits.ColDefs([col1, col2, col3, col4, col5, col6, col7, col8])
 tmc_hdu = fits.BinTableHDU.from_columns(cols)
-tmc_hdu.writeto(data_dir + '/' + target + '_tmc.fits')
+tmc_hdu.writeto(data_dir + target + '_tmc.fits')
