@@ -1,20 +1,10 @@
 from setuptools import setup, find_packages
 import os
+from iancupy_data import download_file
 
-data_dir = os.path.expanduser('~/astro_data')
-
-if not os.path.exists(data_dir):
-    os.mkdir(data_dir)
-else:
-    print('The directory "' + data_dir + '" already exists.')
-
-## codes for data exportation
-from astroquery.vizier import Vizier
-import astropy.units as u
-from astropy.io import fits
-import requests as re
-
-##
+# Download data
+download_file.get_dss_image()
+download_file.get_m4()
 
 NAME = 'iancupy_data'
 # VERSION should be PEP440 compatible (https://www.python.org/dev/peps/pep-0440/)
