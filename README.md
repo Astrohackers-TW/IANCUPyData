@@ -2,8 +2,10 @@
 
 [![Join the chat at https://gitter.im/Astrohackers-TW/Project4PyConTaiwan2017](https://badges.gitter.im/Astrohackers-TW/Project4PyConTaiwan2017.svg)](https://gitter.im/Astrohackers-TW/Project4PyConTaiwan2017?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Installation
-------------
+## Documentation
+* [Development notes in HackMD](https://hackmd.io/s/B1Lzwbwcg)
+
+## Installation
 1. Clone this project from GitHub:
 
         $ git clone https://github.com/Astrohackers-TW/IANCUPyData.git
