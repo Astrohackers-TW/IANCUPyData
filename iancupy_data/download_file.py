@@ -14,7 +14,38 @@ data_dir = os.path.expanduser('~/astro_data/')
 if not os.path.exists(data_dir):
     os.mkdir(data_dir)
 
+# Create the data dictionary
+dic_date = {
+    'dss_image': {
+        'format': 'fits',
+        'type': 'image',
+        'filename': 'dss_image.fits',
+        'description': 'It will get the DSS image, RA: 01 02 03.3, DEC: +00 01 02.2, height & width: 30 arcmin'
+    },
+    'm4': {
+        'format': 'fits',
+        'type': 'catelog',
+        'filename': 'm4_tmc.fits',
+        'description': 'It will get m4 '
+    }
+}
+
 def get_dss_image():
+    '''
+    example of DSS URL
+    https://archive.stsci.edu/cgi-bin/dss_search?
+        v=poss2ukstu_red&   => type of data (poss2, red for instance)
+        r=01%3A02%3A03.3&   => ra in hex decimal
+        d=%2B00%3A01%3A02.2& => dec in hex decimal
+        e=J2000&             => epoch (J2000 for instance)
+        h=30&                => height of the image (30 arcmin)
+        w=30&                => width of the image (30 arcmin)
+        f=fits&              => types of the image (fits or gif)
+        c=none&              => compress 
+        s=on&                
+        fov=NONE&
+        v3=
+    '''
     ## Download digital sky survey fits.
     urlroot = 'https://archive.stsci.edu/cgi-bin/dss_search?'
     v = 'poss2ukstu_red'
