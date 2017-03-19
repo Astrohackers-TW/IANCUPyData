@@ -15,7 +15,7 @@ if not os.path.exists(data_dir):
     os.mkdir(data_dir)
 
 # Create the data dictionary
-dic_date = {
+dic_data = {
     'dss_image': {
         'format': 'fits',
         'type': 'image',
