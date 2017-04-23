@@ -1,2 +1,4 @@
 astropy
 astroquery>=0.3.2
+lxml
+BeautifulSoup
