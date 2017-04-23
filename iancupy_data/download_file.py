@@ -88,15 +88,13 @@ def get_m4():
     #pm = ppmxl[0]
 
     # Retrive data only from 2MASS columns [3,4,9,11,13,15,17,19,21]
-    col1 = fits.Column(name=jhk.colnames[3], format=jhk.dtype[3], array=jhk[jhk.colnames[3]])
-    col2 = fits.Column(name=jhk.colnames[4], format=jhk.dtype[4], array=jhk[jhk.colnames[4]])
-    col3 = fits.Column(name=jhk.colnames[9], format=jhk.dtype[9], array=jhk[jhk.colnames[9]])
-    col4 = fits.Column(name=jhk.colnames[11], format=jhk.dtype[11], array=jhk[jhk.colnames[11]])
-    col5 = fits.Column(name=jhk.colnames[13], format=jhk.dtype[13], array=jhk[jhk.colnames[13]])
-    col6 = fits.Column(name=jhk.colnames[15], format=jhk.dtype[15], array=jhk[jhk.colnames[15]])
-    col7 = fits.Column(name=jhk.colnames[17], format=jhk.dtype[17], array=jhk[jhk.colnames[17]])
-    col8 = fits.Column(name=jhk.colnames[19], format=jhk.dtype[19], array=jhk[jhk.colnames[19]])
-
-    cols = fits.ColDefs([col1, col2, col3, col4, col5, col6, col7, col8])
+    col1 = fits.Column(name=jhk['Jmag'].name, format=jhk['Jmag'].dtype, array=jhk['Jmag'])
+    col2 = fits.Column(name=jhk['e_Jmag'].name, format=jhk['e_Jmag'].dtype, array=jhk['e_Jmag'])
+    col3 = fits.Column(name=jhk['Hmag'].name, format=jhk['Hmag'].dtype, array=jhk['Hmag'])
+    col4 = fits.Column(name=jhk['e_Hmag'].name, format=jhk['e_Hmag'].dtype, array=jhk['e_Hmag'])
+    col5 = fits.Column(name=jhk['Kmag'].name, format=jhk['Kmag'].dtype, array=jhk['Kmag'])
+    col6 = fits.Column(name=jhk['e_Kmag'].name, format=jhk['e_Kmag'].dtype, array=jhk['e_Kmag'])
+    col7 = fits.Column(name=jhk['Qflg'].name, format=jhk['Qflg'].dtype, array=jhk['Qflg'])
+    cols = fits.ColDefs([col1, col2, col3, col4, col5, col6, col7, col8]
     tmc_hdu = fits.BinTableHDU.from_columns(cols)
     tmc_hdu.writeto(data_dir + target + '_tmc.fits', overwrite=True)
