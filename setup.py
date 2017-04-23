@@ -2,16 +2,15 @@ from setuptools import setup, find_packages
 import os
 from iancupy_data import download_file
 
-get_data = input('Do you want to download all data now(y/n)?')
+# Download data
+get_data = input('Do you want to download all data now(y/n)? ')
 if get_data == 'y':
     print('OK, we will download all data')
     download_file.get_dss_image()
+    download_file.get_m4()
 elif get_data == 'n':
     print('OK, any data will not be download.')
 
-# Download data
-#download_file.get_dss_image()
-#download_file.get_m4()
 
 NAME = 'iancupy_data'
 # VERSION should be PEP440 compatible (https://www.python.org/dev/peps/pep-0440/)
