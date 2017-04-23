@@ -95,6 +95,6 @@ def get_m4():
     col5 = fits.Column(name=jhk['Kmag'].name, format=jhk['Kmag'].dtype, array=jhk['Kmag'])
     col6 = fits.Column(name=jhk['e_Kmag'].name, format=jhk['e_Kmag'].dtype, array=jhk['e_Kmag'])
     col7 = fits.Column(name=jhk['Qflg'].name, format=jhk['Qflg'].dtype, array=jhk['Qflg'])
-    cols = fits.ColDefs([col1, col2, col3, col4, col5, col6, col7, col8]
+    cols = fits.ColDefs([col1, col2, col3, col4, col5, col6, col7])
     tmc_hdu = fits.BinTableHDU.from_columns(cols)
     tmc_hdu.writeto(data_dir + target + '_tmc.fits', overwrite=True)
