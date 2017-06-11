@@ -4,13 +4,17 @@ from iancupy_data import download_file
 
 # Download data
 get_data = input('Do you want to download all data now(y/n)? ')
+
+while get_data not in [ 'y', 'n']:
+    print('Please input the "y" or "n".')
+    get_data = input('Do you want to download all data now(y/n)? ')
+
 if get_data == 'y':
     print('OK, we will download all data')
     download_file.get_dss_image()
     download_file.get_m4()
 elif get_data == 'n':
     print('OK, any data will not be download.')
-
 
 NAME = 'iancupy_data'
 # VERSION should be PEP440 compatible (https://www.python.org/dev/peps/pep-0440/)
